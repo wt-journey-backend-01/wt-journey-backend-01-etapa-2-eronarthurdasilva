@@ -18,7 +18,7 @@ function getAgenteById(req, res) {
       return res.status(404).json({message: "Agente não encontrado."});
     }
 
-    res.status(200).jason(agente);
+    res.status(200).json(agente);
     
   } catch (error){
     console.error("Erro ao byscar agente: ", error);
@@ -90,7 +90,7 @@ function deleteAgente(req, res) {
     return res.status(404).json({ message: "Agente não encontrado ou deletado."});
   }
 
-  res.status(200);
+  res.status(204).end;
 }
 // Funções bonus 
 function getAgentesByCargo(req, res) {
@@ -112,6 +112,7 @@ function getAgentesSorted(req, res) {
     
     res.status(200).json(agentes);
 }
+
 
 
 module.exports = {

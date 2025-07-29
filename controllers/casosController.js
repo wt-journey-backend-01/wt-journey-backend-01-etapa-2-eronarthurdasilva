@@ -22,8 +22,12 @@ function createCaso(req, res){
     }
 
 
-    const casoNovo = { id, titulo, descricao, status, agente_id };
+    const casoNovo = { id: uuidv4(), titulo, descricao, status, agente_id };
     const casoCriado = casosRepository.create(casoNovo);
+    const agenteExiste = agentesRepository.findById(agente_id);
+    if (!agenteExiste) {
+        return res.status(400).json({ message: "Agente não encontrado" });
+    }
 
     return res.status(201).json(casoCriado);
 }

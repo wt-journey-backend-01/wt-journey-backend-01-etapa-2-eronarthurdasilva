@@ -42,7 +42,7 @@ function create(agente) {
 
 //Função para atualizar completa o dados do agente
 function update(id, updatedData){
-    const index = agentes.fingIndex(agente => agente.id === id);
+    const index = agentes.findIndex(agente => agente.id === id);
     if(index === -1) return null;
 
     agentes[index] = { ...agentes[index], ...updatedData };//Matém o mesmo ID

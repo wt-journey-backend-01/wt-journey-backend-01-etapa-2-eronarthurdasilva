@@ -9,21 +9,21 @@ const router = express.Router();
 
 const agentesController = require('../controllers/agentesController');
 console.log('Função getAllAgentes:', agentesController.getAllAgentes);
-router.get('/agentes', agentesController.getAllAgentes);
+router.get('/', agentesController.getAllAgentes);
 
 module.exports = router;
 //rota para buscar agente
-router.get('/agentes/:id', agentesController.getAgenteById);
+router.get('/:id', agentesController.getAgenteById);
 //rota para criar um novo agente 
-router.post('/agentes', agentesController.createAgente);
+router.post('/', agentesController.createAgente);
 //rota para atualizar os dados dos agentes
-router.put('/agentes/:id', agentesController.updateAgente);
+router.put('/:id', agentesController.updateAgente);
 //rota para atualização parcial dos dados dos agentes
-router.patch('/agentes/:id', agentesController.patchAgente);
+router.patch('/:id', agentesController.patchAgente);
 //rota para deletar os agentes
-router.delete('/agentes/:id', agentesController.deleteAgente);
+router.delete('/:id', agentesController.deleteAgente);
 //rotas bonus 
-router.get('/agentes', (req, res) => {
+router.get('/', (req, res) => {
     if (req.query.cargo) return agentesController.getAgentesByCargo(req, res);
     if (req.query.sort) return agentesController.getAgentesSorted(req, res);
     return agentesController.getAllAgentes(req, res);
